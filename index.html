@@ -59,12 +59,32 @@
       #info {
         margin: 20px;
         padding: 20px;
+        position: absolute;
+        left: 0;
+        top: 0; 
         text-align: center;
         width: 150px;
         border-radius: 20%;
-        position: top left;
         font-family: fantasy;
       }
+      
+      #progress {
+        width: 200px;
+        color: black;
+        font-size: 20px;
+        text-align: center;
+        position: center;
+        z-index: 1;
+        overflow: hidden;
+        border: 1px solid grey;
+      }
+
+      #bar {
+        width: 1%;
+        height: 20px;
+        background-color: green;
+      }
+       
     </style>
   </head>
 
@@ -72,51 +92,71 @@
     <div id="info"></div>
     <button class="button" id="clicker">push for rat</button>
     <button class="reset" id="press">reset</button>
-  </body>
-
+    <div id="progress">loading...
+      <div id="bar"></div>
+    </div> 
+    <audio src="sweetdreams2.mp3" id="sweetdreams"></audio>
+  </body> 
+ 
   <script>
     let counter = 0
-    let timer = 0
+    let timer = 0 
 
     const p = document.querySelector('#info')
+    const bar = document.querySelector('#bar')
+    const sweetdreams = document.querySelector('#sweetdreams')
 
     function runTimer() {
       timer = setTimeout(runTimer, 100)
-      counter++
+      counter++  
+      bar.style.width = counter*10 + '%' 
+    }   
+    
+    function resetbar() {
+      bar.style.width = 0
     }
-
-    function clickUp() {
+    
+    function randomx() {
+      const leftedge = innerWidth/2 - 90
+      const x = Math.random() * leftedge
+      return x
+    }
+ 
+    function clickUp() { 
       // creates rat
       const rat1 = document.createElement('div')
       rat1.className = 'rat1'
-      const x = Math.random() * 100
-      rat1.style.left = x + 'vw'
+      const x = randomx()
+      rat1.style.left = x + 'px'
       const y = Math.random() * 100
       rat1.style.top = y + 'vh'
       document.body.appendChild(rat1)
-      // color logic  
+      sweetdreams.play() 
+      // sweetdreams.pause() 
+      // sweetdreams.currentTime = 0
+      // color logic   
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
-        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind'
+        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind'   
         p.style.backgroundColor = 'pink'
       } else if (counter >= 2 && counter < 10) {
-        rat1.style.backgroundImage = 'url(man.png)'
+        rat1.style.backgroundImage = 'url(man.png)'     
         rat1.style.height = '450px'
         rat1.style.width = '450px'
         p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man, he promises.'
-        p.style.backgroundColor = 'pink'
+        p.style.backgroundColor = 'teal'
       } else {
         rat1.style.backgroundImage = 'url(absoluteunit.png)'
         rat1.style.height = '500px'
         rat1.style.width = '500px'
         p.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus.'
-        p.style.backgroundColor = 'pink'
+        p.style.backgroundColor = 'turquoise'
       }
       // reset timer
       clearTimeout(timer)
       counter = 0
       timer = 0
-    }
+    } 
 
     function reset() {
       window.location.reload();
@@ -125,6 +165,7 @@
     const btn = document.querySelector('#clicker')
     const undo = document.querySelector('#press')
     btn.addEventListener('mousedown', runTimer)
+    btn.addEventListener('mousedown', resetbar)
     btn.addEventListener('mouseup', clickUp)
     undo.addEventListener('mousedown', reset)
   </script>
