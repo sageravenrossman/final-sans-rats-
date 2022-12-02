@@ -111,7 +111,7 @@
     function runTimer() {
       timer = setTimeout(runTimer, 100)
       counter++  
-      bar.style.width = counter*10 + '%' 
+      bar.style.width = counter*5 + '%' 
     }   
     
     function resetbar() {
@@ -145,20 +145,26 @@
       // color logic   
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
-        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind'   
+        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind. Pipsqueak bids you a good day, and leaves you with a bushel of apples'   
         p.style.backgroundColor = 'pink'
       } else if (counter >= 2 && counter < 10) {
         rat1.style.backgroundImage = 'url(man.png)'     
         rat1.style.height = '450px'
         rat1.style.width = '450px'
-        p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man, he promises.'
+        p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man. "No really, a totally regular guy!" says Regular Dude. He also politely asks for your kneecaps'
+        p.style.backgroundColor = 'teal'
+      } else if (counter >= 10 && counter < 20) {
+        rat1.style.backgroundImage = 'url(absoluteunit.png)'     
+        rat1.style.height = '450px'
+        rat1.style.width = '450px'
+        p.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus. He means it - you should hire someone good.' 
         p.style.backgroundColor = 'teal'
       } else {
-        rat1.style.backgroundImage = 'url(absoluteunit.png)'
+        rat1.style.backgroundImage = 'url(fat.png)'
         rat1.style.height = '500px'
         rat1.style.width = '500px'
-        p.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus.'
-        p.style.backgroundColor = 'turquoise'
+        p.textContent = 'Congrats! This is The Boss. The Boss was dropped on his head A LOT as a child. As a result, he shows no mercy, and you should run now. "Boss Hungry, Boss eat" says The Boss'
+        p.style.backgroundColor = 'azure'
       }
       // reset timer
       clearTimeout(timer)
