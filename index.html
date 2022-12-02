@@ -10,9 +10,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: rgb(184, 234, 226);
         transition: background-color 1s;
       }
-      
+
       .button {
         height: 180px;
         width: 180px;
@@ -21,17 +22,18 @@
         color: white;
         font-size: 30px;
       }
-      
+
       .reset {
         height: 30px;
         width: 70px;
-        background-color: grey;
+        background-color: rgb(77, 127, 255);
         border-radius: 5%;
         color: white;
         font-size: 15px;
         position: top right;
+        margin: 30px;
       }
-      
+
       .rat1 {
         background-repeat: no-repeat;
         background-size: contain;
@@ -40,9 +42,9 @@
         width: 130px;
         top: 0vh;
         left: 0vw;
-        z-index: -1;
+        z-index: 0;
       }
-      
+
       .text {
         font-size: 20px;
         width: 250px;
@@ -50,26 +52,38 @@
         border-radius: 10%;
         color: white;
         text-align: center;
-        position: top left;
+
       }
 
-    </style> 
+      #info {
+        margin: 20px;
+        padding: 20px;
+        text-align: center;
+        width: 150px;
+        border-radius: 20%;
+        position: top left;
+        font-family: fantasy;
+      }
+    </style>
   </head>
-  
+
   <body>
+    <div id="info"></div>
     <button class="button" id="clicker">push for rat</button>
     <button class="reset" id="press">reset</button>
   </body>
-  
+
   <script>
     let counter = 0
     let timer = 0
-    
+
+    const p = document.querySelector('#info')
+
     function runTimer() {
       timer = setTimeout(runTimer, 100)
       counter++
     }
-    
+
     function clickUp() {
       // creates rat
       const rat1 = document.createElement('div')
@@ -82,30 +96,36 @@
       // color logic  
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
+        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind'
+        p.style.backgroundColor = 'pink'
       } else if (counter >= 2 && counter < 10) {
-        rat1.style.backgroundImage = 'url(man.png)' 
-        rat1.style.height = '450px'      
-        rat1.style.width = '450px' 
+        rat1.style.backgroundImage = 'url(man.png)'
+        rat1.style.height = '450px'
+        rat1.style.width = '450px'
+        p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man, he promises.'
+        p.style.backgroundColor = 'pink'
       } else {
         rat1.style.backgroundImage = 'url(absoluteunit.png)'
         rat1.style.height = '500px'
         rat1.style.width = '500px'
+        p.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus.'
+        p.style.backgroundColor = 'pink'
       }
       // reset timer
       clearTimeout(timer)
       counter = 0
       timer = 0
     }
-    
+
     function reset() {
       document.getElementById('rat1').remove();
     }
-    
+
     const btn = document.querySelector('#clicker')
     const undo = document.querySelector('#press')
     btn.addEventListener('mousedown', runTimer)
     btn.addEventListener('mouseup', clickUp)
     undo.addEventListener('mousedown', reset)
   </script>
-  
+
 </html>
