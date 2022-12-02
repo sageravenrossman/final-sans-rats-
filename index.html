@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>push for rat!</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 1s;
+      }
+      
+      .button {
+        height: 180px;
+        width: 180px;
+        background-color: blue;
+        border-radius: 50%;
+        color: white;
+        font-size: 30px;
+      }
+      
+      .reset {
+        height: 30px;
+        width: 70px;
+        background-color: grey;
+        border-radius: 5%;
+        color: white;
+        font-size: 15px;
+        position: top right;
+      }
+      
+      .rat1 {
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        height: 130px;
+        width: 130px;
+        top: 0vh;
+        left: 0vw;
+        z-index: -1;
+      }
+      
+      .text {
+        font-size: 20px;
+        width: 250px;
+        background-color: pink;
+        border-radius: 10%;
+        color: white;
+        text-align: center;
+        position: top left;
+      }
+
+    </style> 
+  </head>
+  
+  <body>
+    <button class="button" id="clicker">push for rat</button>
+    <button class="reset" id="press">reset</button>
+  </body>
+  
+  <script>
+    let counter = 0
+    let timer = 0
+    
+    function runTimer() {
+      timer = setTimeout(runTimer, 100)
+      counter++
+    }
+    
+    function clickUp() {
+      // creates rat
+      const rat1 = document.createElement('div')
+      rat1.className = 'rat1'
+      const x = Math.random() * 100
+      rat1.style.left = x + 'vw'
+      const y = Math.random() * 100
+      rat1.style.top = y + 'vh'
+      document.body.appendChild(rat1)
+      // color logic  
+      if (counter < 2) {
+        rat1.style.backgroundImage = 'url(baby.png)'
+      } else if (counter >= 2 && counter < 10) {
+        rat1.style.backgroundImage = 'url(man.png)' 
+        rat1.style.height = '450px'      
+        rat1.style.width = '450px' 
+      } else {
+        rat1.style.backgroundImage = 'url(absoluteunit.png)'
+        rat1.style.height = '500px'
+        rat1.style.width = '500px'
+      }
+      // reset timer
+      clearTimeout(timer)
+      counter = 0
+      timer = 0
+    }
+    
+    function reset() {
+      const rat1 = document.createElement('div')
+      rat1.className = 'rat1'
+      rat1.classList.remove('rat1')
+    }
+    
+    const btn = document.querySelector('#clicker')
+    const undo = document.querySelector('#press')
+    btn.addEventListener('mousedown', runTimer)
+    btn.addEventListener('mouseup', clickUp)
+    undo.addEventListener('mousedown', reset)
+  </script>
+  
+</html>
