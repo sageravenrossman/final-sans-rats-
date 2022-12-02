@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <title>push for rat!</title>
+    <title>new and improved rat!</title>
     <style>
       body {
         height: 100vh;
@@ -118,26 +118,26 @@
       bar.style.width = 0
     }
     
-    function randomx() {
-      const leftedge = innerWidth/2 + 90
-      const x = Math.random() * leftedge
-      return x
-    }
+    // function randomx() {
+    //   const leftedge = innerWidth/2 + 90
+    //   const x = Math.random() * leftedge
+    //   return x
+    // }
     
-    function randomy() {
-      const leftedge = innerHeight/2 + 90
-      const y = Math.random() * leftedge
-      return y
-    }
+    // function randomy() {
+    //   const leftedge = innerHeight/2 + 90
+    //   const y = Math.random() * leftedge
+    //   return y
+    // }
  
     function clickUp() { 
       // creates rat
       const rat1 = document.createElement('div')
       rat1.className = 'rat1'
-      const x = randomx()
-      rat1.style.left = x + 'px'
-      const y = randomy()
-      rat1.style.top = y + 'px'
+      const x = Math.random() * 100
+      rat1.style.left = x + 'vw'
+      const y = Math.random() * 100
+      rat1.style.top = y + 'vh'
       document.body.appendChild(rat1)
       sweetdreams.play() 
       // sweetdreams.pause() 
