@@ -13,7 +13,7 @@
         background-color: rgb(184, 234, 226);
         transition: background-color 1s;
       }
- 
+
       .button {
         height: 180px;
         width: 180px;
@@ -60,16 +60,16 @@
       #info {
         margin: 20px;
         padding: 20px;
-/*         position: absolute;
+        /*         position: absolute;
         left: 0;
-        top: 0;  */ 
+        top: 0;  */
         text-align: center;
         width: 250px;
         border-radius: 20%;
         font-family: fantasy, serif;
-        z-index: 1; 
+        z-index: 1;
       }
-      
+
       #progress {
         width: 200px;
         color: black;
@@ -86,7 +86,6 @@
         height: 20px;
         background-color: green;
       }
-       
     </style>
   </head>
 
@@ -96,45 +95,55 @@
     <button class="reset" id="press">reset</button>
     <div id="progress">loading...
       <div id="bar"></div>
-    </div> 
+    </div>
     <audio src="sweetdreams2.mp3" id="sweetdreams"></audio>
     <audio src="ridindirty.mp3" id="ridindirty"></audio>
-  </body>  
- 
+    <audio src="backinblack.mp3" id="backinblack"></audio>
+    <audio src="tiptoe.mp3" id="tiptoe"></audio>
+  </body>
+
   <script>
     let counter = 0
-    let timer = 0 
+    let timer = 0
 
     const p = document.querySelector('#info')
     const bar = document.querySelector('#bar')
     const sweetdreams = document.querySelector('#sweetdreams')
     const ridindirty = document.querySelector('#ridindirty')
+    const tiptoe = document.querySelector('#tiptoe')
+    const backinblack = document.querySelector('#backinblack')
 
     function runTimer() {
       timer = setTimeout(runTimer, 100)
-      counter++  
-      bar.style.width = counter*5 + '%' 
-    }   
-    
+      counter++
+      bar.style.width = counter * 5 + '%'
+    }
+
     function resetbar() {
       bar.style.width = 0
-      sweetdreams.pause() 
-      sweetdreams.currentTime = 0 
+      sweetdreams.pause()
+      sweetdreams.currentTime = 0
+      tiptoe.pause()
+      tiptoe.currentTime = 0
+      backinblack.pause()
+      backinblack.currentTime = 0
+      ridindirty.pause()
+      ridindirty.currentTime = 0
     }
-    
+
     // function randomx() {
     //   const leftedge = innerWidth/2 + 90
     //   const x = Math.random() * leftedge
     //   return x
     // }
-    
+
     // function randomy() {
     //   const leftedge = innerHeight/2 + 90
     //   const y = Math.random() * leftedge
     //   return y
     // } 
- 
-    function clickUp() { 
+
+    function clickUp() {
       // creates rat
       const rat1 = document.createElement('div')
       rat1.className = 'rat1'
@@ -142,33 +151,36 @@
       rat1.style.left = x + 'vw'
       const y = Math.random() * 100
       rat1.style.top = y + 'vh'
-      document.body.appendChild(rat1) 
+      document.body.appendChild(rat1)
       // sweetdreams.pause() 
       // sweetdreams.currentTime = 0
       // color logic   
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
-        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind. Pipsqueak bids you a good day, and leaves you with a bushel of apples'    
+        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind. Pipsqueak bids you a good day, and leaves you with a bushel of apples'
         p.style.backgroundColor = 'pink'
+        tiptoe.play()
       } else if (counter >= 2 && counter < 10) {
-        rat1.style.backgroundImage = 'url(man.png)'     
+        rat1.style.backgroundImage = 'url(man.png)'
         rat1.style.height = '450px'
         rat1.style.width = '450px'
         sweetdreams.play()
         p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man. "No really, a totally regular guy!" says Regular Dude. He politely asks for your kneecaps'
         p.style.backgroundColor = 'teal'
       } else if (counter >= 10 && counter < 20) {
-        rat1.style.backgroundImage = 'url(absoluteunit.png)'     
+        rat1.style.backgroundImage = 'url(absoluteunit.png)'
         rat1.style.height = '450px'
         rat1.style.width = '450px'
-        p.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus. He means it - you should hire someone good.' 
+        backinblack.currentTime = 5
+        backinblack.play()
+        p.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus. He means it - you should hire someone good.'
         p.style.backgroundColor = 'teal'
       } else {
         rat1.style.backgroundImage = 'url(fat.png)'
         rat1.style.height = '500px'
         rat1.style.width = '500px'
         ridindirty.currentTime = 13
-        ridindirty.play()   
+        ridindirty.play()
         p.textContent = 'Congrats! This is The Boss. The Boss was dropped on his head A LOT as a child. As a result, he shows no mercy, and you should run now. "Boss Hungry, Boss eat" says The Boss'
         p.style.backgroundColor = 'azure'
       }
@@ -176,11 +188,11 @@
       clearTimeout(timer)
       counter = 0
       timer = 0
-    } 
+    }
 
     function reset() {
       window.location.reload();
-    } 
+    }
 
     const btn = document.querySelector('#clicker')
     const undo = document.querySelector('#press')
