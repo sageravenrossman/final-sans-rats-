@@ -60,14 +60,14 @@
       #info {
         margin: 20px;
         padding: 20px;
-        position: absolute;
+/*         position: absolute;
         left: 0;
-        top: 0; 
+        top: 0;  */ 
         text-align: center;
-        width: 150px;
+        width: 250px;
         border-radius: 20%;
-        font-family: fantasy;
-        z-index: 1;
+        font-family: fantasy, serif;
+        z-index: 1; 
       }
       
       #progress {
@@ -98,7 +98,8 @@
       <div id="bar"></div>
     </div> 
     <audio src="sweetdreams2.mp3" id="sweetdreams"></audio>
-  </body> 
+    <audio src="ridindirty.mp3" id="ridindirty"></audio>
+  </body>  
  
   <script>
     let counter = 0
@@ -107,6 +108,7 @@
     const p = document.querySelector('#info')
     const bar = document.querySelector('#bar')
     const sweetdreams = document.querySelector('#sweetdreams')
+    const ridindirty = document.querySelector('#ridindirty')
 
     function runTimer() {
       timer = setTimeout(runTimer, 100)
@@ -116,6 +118,8 @@
     
     function resetbar() {
       bar.style.width = 0
+      sweetdreams.pause() 
+      sweetdreams.currentTime = 0 
     }
     
     // function randomx() {
@@ -128,7 +132,7 @@
     //   const leftedge = innerHeight/2 + 90
     //   const y = Math.random() * leftedge
     //   return y
-    // }
+    // } 
  
     function clickUp() { 
       // creates rat
@@ -138,20 +142,20 @@
       rat1.style.left = x + 'vw'
       const y = Math.random() * 100
       rat1.style.top = y + 'vh'
-      document.body.appendChild(rat1)
-      sweetdreams.play() 
+      document.body.appendChild(rat1) 
       // sweetdreams.pause() 
       // sweetdreams.currentTime = 0
       // color logic   
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
-        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind. Pipsqueak bids you a good day, and leaves you with a bushel of apples'   
+        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind. Pipsqueak bids you a good day, and leaves you with a bushel of apples'    
         p.style.backgroundColor = 'pink'
       } else if (counter >= 2 && counter < 10) {
         rat1.style.backgroundImage = 'url(man.png)'     
         rat1.style.height = '450px'
         rat1.style.width = '450px'
-        p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man. "No really, a totally regular guy!" says Regular Dude. He also politely asks for your kneecaps'
+        sweetdreams.play()
+        p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man. "No really, a totally regular guy!" says Regular Dude. He politely asks for your kneecaps'
         p.style.backgroundColor = 'teal'
       } else if (counter >= 10 && counter < 20) {
         rat1.style.backgroundImage = 'url(absoluteunit.png)'     
@@ -163,6 +167,8 @@
         rat1.style.backgroundImage = 'url(fat.png)'
         rat1.style.height = '500px'
         rat1.style.width = '500px'
+        ridindirty.currentTime = 13
+        ridindirty.play()   
         p.textContent = 'Congrats! This is The Boss. The Boss was dropped on his head A LOT as a child. As a result, he shows no mercy, and you should run now. "Boss Hungry, Boss eat" says The Boss'
         p.style.backgroundColor = 'azure'
       }
