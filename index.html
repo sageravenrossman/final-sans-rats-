@@ -10,14 +10,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: linear-gradient(#009dff 0%, #c76ebc 100%);
+        background-color: rgb(150, 220, 250);
         transition: background-color 1s;
       }
 
       .button {
         height: 150px;
         width: 150px;
-        background-color: rgb(0, 0, 255, 0.7);
+        background-color: rgb(0, 0, 255, 0.5);
         border-radius: 50%;
         color: white;  
         border-width: medium; 
@@ -82,7 +82,7 @@
         position: center;
         z-index: 1;
         overflow: hidden;
-        border: 2px solid grey;
+        border: 2px solid black;
         border-radius: 50%;
       } 
 
@@ -163,7 +163,7 @@
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
         p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind. Pipsqueak bids you a good day, and leaves you with a bushel of apples'
-        p.style.backgroundColor = 'transparent'
+        p.style.backgroundColor = 'rgb(250, 100, 100, 0.5)'
         tiptoe.play()
       } else if (counter >= 2 && counter < 10) {
         rat1.style.backgroundImage = 'url(man.png)'
@@ -171,7 +171,7 @@
         rat1.style.width = '450px'
         sweetdreams.play()
         p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man. "No really, a totally regular guy!" says Regular Dude. He politely asks for your kneecaps'
-        p.style.backgroundColor = 'transparent'
+        p.style.backgroundColor = 'rgb(150, 50, 200, 0.5)'
       } else if (counter >= 10 && counter < 20) {
         rat1.style.backgroundImage = 'url(absoluteunit.png)'
         rat1.style.height = '450px'
@@ -179,7 +179,7 @@
         backinblack.currentTime = 5
         backinblack.play()
         p.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus. He means it - you should hire someone good.'
-        p.style.backgroundColor = 'transparent'
+        p.style.backgroundColor = 'rgb(100, 100, 250, 0.5)'
       } else {
         rat1.style.backgroundImage = 'url(fat.png)'
         rat1.style.height = '500px'
@@ -187,7 +187,7 @@
         ridindirty.currentTime = 13
         ridindirty.play()
         p.textContent = 'Congrats! This is The Boss. The Boss was dropped on his head A LOT as a child. As a result, he shows no mercy, and you should run now. "Boss Hungry, Boss eat" says The Boss'
-        p.style.backgroundColor = 'transparent'
+        p.style.backgroundColor = 'rgb(100, 250, 100, 0.5)'
       }
       // reset timer
       clearTimeout(timer)
